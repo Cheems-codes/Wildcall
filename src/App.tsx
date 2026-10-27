@@ -3,7 +3,7 @@ import { useAnimalRecognizer } from "./hooks/useAnimalRecognizer";
 
 import type { CSSProperties } from "react";
 
-const meadowBackground = "/manus-storage/async-images/BKOMVua1ITKMNeYq3rJsNC/image-1.webp";
+const meadowBackground = "./assets/woodland-clearing.webp";
 
 function MicrophoneIcon() {
   return (
@@ -79,7 +79,10 @@ function App() {
 
         <section className="experience-layout" aria-label="Animal call experience">
           <div className="meadow-card">
-            <div className="meadow-scene" style={{ backgroundImage: `linear-gradient(180deg, rgba(23, 47, 37, .08), rgba(31, 52, 40, .07)), url("${meadowBackground}"), url("./assets/woodland-fallback.svg")` }}>
+            <div
+              className="meadow-scene"
+              style={{ backgroundImage: `linear-gradient(180deg, rgba(23, 47, 37, .08), rgba(31, 52, 40, .07)), url("${meadowBackground}")` }}
+            >
               <div className="scene-sun-glow" aria-hidden="true" />
               <div className="scene-label">
                 <span className="scene-label-icon"><LeafIcon /></span>
