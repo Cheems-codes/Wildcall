@@ -54,8 +54,8 @@ function App() {
   return (
     <div className="site-shell">
       <header className="topbar">
-        <a className="brand" href="/" aria-label="Wildcall home">
-          <img src="/assets/wildcall-mark.svg" alt="" className="brand-mark" />
+        <a className="brand" href="./" aria-label="Wildcall home">
+          <img src="./assets/wildcall-mark.svg" alt="" className="brand-mark" />
           <span className="brand-name">wildcall<span>.</span></span>
         </a>
         <div className="topbar-note">
@@ -79,7 +79,7 @@ function App() {
 
         <section className="experience-layout" aria-label="Animal call experience">
           <div className="meadow-card">
-            <div className="meadow-scene" style={{ backgroundImage: `linear-gradient(180deg, rgba(23, 47, 37, .08), rgba(31, 52, 40, .07)), url("${meadowBackground}")` }}>
+            <div className="meadow-scene" style={{ backgroundImage: `linear-gradient(180deg, rgba(23, 47, 37, .08), rgba(31, 52, 40, .07)), url("${meadowBackground}"), url("./assets/woodland-fallback.svg")` }}>
               <div className="scene-sun-glow" aria-hidden="true" />
               <div className="scene-label">
                 <span className="scene-label-icon"><LeafIcon /></span>
@@ -105,7 +105,16 @@ function App() {
                         style={{ "--animal-accent": animal.accent, "--arrival-delay": `${Math.min(index * 85, 420)}ms` } as CSSProperties}
                       >
                         <span className="animal-shadow" aria-hidden="true" />
-                        <img src={animal.image} alt={`${animal.name} visiting the woodland meadow`} />
+                        <span className="animal-emoji" aria-hidden="true" hidden>{animal.emoji}</span>
+                        <img
+                          src={animal.image}
+                          alt={`${animal.name} visiting the woodland meadow`}
+                          onError={(event) => {
+                            event.currentTarget.hidden = true;
+                            const fallback = event.currentTarget.previousElementSibling;
+                            if (fallback instanceof HTMLElement) fallback.hidden = false;
+                          }}
+                        />
                         <figcaption>{animal.name}</figcaption>
                       </figure>
                     );

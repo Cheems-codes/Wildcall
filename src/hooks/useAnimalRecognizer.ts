@@ -20,8 +20,8 @@ interface Candidate {
   at: number;
 }
 
-const MODEL_URL = "/model/model.json";
-const METADATA_URL = "/model/metadata.json";
+const MODEL_URL = "./model/model.json";
+const METADATA_URL = "./model/metadata.json";
 const MODEL_START_THRESHOLD = 0.56;
 const CONFIRM_THRESHOLD = 0.69;
 const INSTANT_THRESHOLD = 0.91;
@@ -174,7 +174,9 @@ export function useAnimalRecognizer() {
 
       let recognizer = recognizerRef.current;
       if (!recognizer) {
-        recognizer = speechCommands.create("BROWSER_FFT", undefined, MODEL_URL, METADATA_URL);
+        const modelUrl = new URL(MODEL_URL, window.location.href).href;
+        const metadataUrl = new URL(METADATA_URL, window.location.href).href;
+        recognizer = speechCommands.create("BROWSER_FFT", undefined, modelUrl, metadataUrl);
         recognizerRef.current = recognizer;
         try {
           await recognizer.ensureModelLoaded();

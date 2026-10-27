@@ -225,3 +225,9 @@ h1, h2, p { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Standalone Live Server fallback when project-hosted animal cutouts are unreachable. */
+.animal-emoji { position: relative; z-index: 1; width: min(100%, 142px); height: clamp(88px, 13vw, 152px); place-items: center; font-size: clamp(52px, 7vw, 94px); line-height: 1; filter: drop-shadow(0 7px 5px rgba(33, 44, 28, .2)); }
+.animal-emoji:not([hidden]) { display: grid; }
+.animal-emoji[hidden] { display: none; }
+@media (max-width: 560px) { .animal-emoji { height: clamp(75px, 24vw, 115px); font-size: clamp(48px, 12vw, 72px); } }
