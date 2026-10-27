@@ -1,0 +1,27 @@
+{
+  "name": "wildcall",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@11.25.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "check": "tsc -b --pretty false",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@tensorflow-models/speech-commands": "0.5.4",
+    "@tensorflow/tfjs": "3.21.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "util": "0.12.5"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "typescript": "5.8.3",
+    "vite": "6.3.5"
+  }
+}
